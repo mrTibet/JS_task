@@ -1,5 +1,16 @@
+//get access to list json
+let listArray;
 
-//////
+ fetch("./list.json")
+.then(response => {
+   return response.json();
+})
+.then(function(data){
+    listArray = data;
+});
+
+//fullfill form
+
 let characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
 let arr = [];
 function randomArr(){
@@ -32,4 +43,6 @@ letters.addEventListener('click',function(ev){
       console.log(ev.target.innerHTML)
     }
 })
+
+
 
