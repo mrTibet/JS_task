@@ -38,6 +38,8 @@ function createRandomList (){
 randomArr();
 createRandomList();
 
+//choosing of option/ event
+
 letters.addEventListener('click',function(ev){
     if(ev.target.tagName==='OPTION'){
       console.log(ev.target.innerHTML)
