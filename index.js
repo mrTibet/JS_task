@@ -1,3 +1,6 @@
+let ul = document.querySelector('.result-list');
+let div = document.querySelector('.result');
+
 //get access to list json
 let listArray;
 
@@ -9,9 +12,9 @@ let listArray;
     listArray = data;
 });
 
-//fullfill form
+//fullfill form -- 'abcdefghijklmnopqrstuvwxyz'
 
-let characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+let characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 let arr = [];
 function randomArr(){
     for(let i = 0; i<5;i++){
@@ -38,13 +41,29 @@ function createRandomList (){
 randomArr();
 createRandomList();
 
-//choosing of option/ event
+//choosing of option+event
+
+
 
 letters.addEventListener('click',function(ev){
     if(ev.target.tagName==='OPTION'){
-      console.log(ev.target.innerHTML)
+        ul.innerHTML='';
+        seaRch(ev.target.innerHTML)
+    } else {
+        ul.innerHTML='';
+        console.log('NO MATCHES')
+        ul.insertAdjacentHTML('afterbegin',`<p>no matches!</p>`)
     }
 })
+
+function seaRch(letter){
+    for(let i = 0;i<listArray.length;i++){
+        if (listArray[i]["name"][0]===letter) {
+            /*console.log(listArray[i]["name"])*/
+            ul.insertAdjacentHTML('afterbegin',`<li>${listArray[i]["name"]}</li>`)
+        }
+    }
+}
 
 
 
