@@ -1,6 +1,6 @@
 let ul = document.querySelector('.result-list');
 let div = document.querySelector('.result');
-
+let submit = document.getElementById('submit');
 //get access to list json
 let listArray;
 
@@ -20,7 +20,6 @@ function randomArr(){
     for(let i = 0; i<5;i++){
         arr.push(characters[randomIndex()])
     }
-    console.log(arr);
 }
 
 function randomIndex () {
@@ -41,11 +40,9 @@ function createRandomList (){
 randomArr();
 createRandomList();
 
-//choosing of option+event
+//result of search -- old version
 
-
-
-letters.addEventListener('click',function(ev){
+/*letters.addEventListener('click',function(ev){
     if(ev.target.tagName==='OPTION'){
         ul.innerHTML='';
         seaRch(ev.target.innerHTML)
@@ -59,11 +56,27 @@ letters.addEventListener('click',function(ev){
 function seaRch(letter){
     for(let i = 0;i<listArray.length;i++){
         if (listArray[i]["name"][0]===letter) {
-            /*console.log(listArray[i]["name"])*/
+            console.log(listArray[i]["name"])
+            ul.insertAdjacentHTML('afterbegin',`<li>${listArray[i]["name"]}</li>`)
+        }
+    }
+}*/
+//result of search -- new version
+function seaRch(letter){
+    for(let i = 0;i<listArray.length;i++){
+        if (listArray[i]["name"][0]===letter) {
             ul.insertAdjacentHTML('afterbegin',`<li>${listArray[i]["name"]}</li>`)
         }
     }
 }
 
-
+submit.addEventListener('click', function(ev){
+    let userLetter = document.getElementById('letters').value;
+    ul.innerHTML='';
+    seaRch(userLetter);
+    if (ul.innerHTML==false) {
+        ul.insertAdjacentHTML('afterbegin',`<p>No matches!</p>`)
+    }
+    ev.preventDefault();
+})
 
