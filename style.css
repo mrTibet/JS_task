@@ -9,6 +9,11 @@ body {
 }
 form {
     margin-bottom: 10px;
+    font-size: 18px;
+}
+form select {
+    font-size: 14px;
+    padding: 4px;
 }
 .result {
     border: 1px solid black;

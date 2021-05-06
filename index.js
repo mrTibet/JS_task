@@ -42,7 +42,7 @@ createRandomList();
 
 //result of search -- old version
 
-/*letters.addEventListener('click',function(ev){
+letters.addEventListener('click',function(ev){
     if(ev.target.tagName==='OPTION'){
         ul.innerHTML='';
         seaRch(ev.target.innerHTML)
@@ -60,9 +60,9 @@ function seaRch(letter){
             ul.insertAdjacentHTML('afterbegin',`<li>${listArray[i]["name"]}</li>`)
         }
     }
-}*/
+}
 //result of search -- new version
-function seaRch(letter){
+/*function seaRch(letter){
     for(let i = 0;i<listArray.length;i++){
         if (listArray[i]["name"][0]===letter) {
             ul.insertAdjacentHTML('afterbegin',`<li>${listArray[i]["name"]}</li>`)
@@ -78,5 +78,5 @@ submit.addEventListener('click', function(ev){
         ul.insertAdjacentHTML('afterbegin',`<p>No matches!</p>`)
     }
     ev.preventDefault();
-})
+})*/
 
