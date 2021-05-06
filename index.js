@@ -27,6 +27,7 @@ function randomIndex () {
 }
 
 let letters = document.getElementById('letters');
+let options = document.getElementsByTagName('option');
 
 function createRandomList (){
     for(let i = 0;i<letters.length;i++){
@@ -42,26 +43,28 @@ createRandomList();
 
 //result of search -- old version
 
-letters.addEventListener('click',function(ev){
-    if(ev.target.tagName==='OPTION'){
-        ul.innerHTML='';
-        seaRch(ev.target.innerHTML)
-    } else {
-        ul.innerHTML='';
-        console.log('NO MATCHES')
-        ul.insertAdjacentHTML('afterbegin',`<p>no matches!</p>`)
-    }
-})
+
+for(let i = 0; i<options.length;i++){
+    options[i].addEventListener('click',function(ev){
+      if(ev.target.tagName==='OPTION'){
+          ul.innerHTML='';
+          seaRch(ev.target.innerHTML)
+          if (ul.innerHTML==false) {
+            ul.insertAdjacentHTML('afterbegin',`<p>No matches!</p>`)
+        }
+      } 
+  })
+  }
 
 function seaRch(letter){
     for(let i = 0;i<listArray.length;i++){
         if (listArray[i]["name"][0]===letter) {
-            console.log(listArray[i]["name"])
             ul.insertAdjacentHTML('afterbegin',`<li>${listArray[i]["name"]}</li>`)
         }
     }
+    
 }
-//result of search -- new version
+//version with submit
 /*function seaRch(letter){
     for(let i = 0;i<listArray.length;i++){
         if (listArray[i]["name"][0]===letter) {
